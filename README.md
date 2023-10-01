@@ -6,8 +6,12 @@
 Star ⭐ and Share this repository.
 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/lxmwaniky/UoEm_hacktoberfest/issues)
-[![GitHub issues by-label](https://img.shields.io/github/issues-pr-closed-raw/lxmwaniky/UoEm_hacktoberfest.svg)](https://github.com/lxmwaniky/UoEm_hacktoberfest/pulls?q=is%3Apr+is%3Aclosed)
-[![GitHub issues by-label](https://img.shields.io/github/issues-pr/lxmwaniky/UoEm_hacktoberfest.svg)](https://github.com/lxmwaniky/UoEm_hacktoberfest/pulls?q=is%3Aopen+is%3Apr)
+
+![Issues](https://img.shields.io/github/issues/lxmwaniky/UoEm_hacktoberfest?style=social&logo=github)
+![Pull Requests](https://img.shields.io/github/issues-pr/lxmwaniky/UoEm_hacktoberfest?style=social&logo=github)
+![Forks](https://img.shields.io/github/forks/lxmwaniky/UoEm_hacktoberfest?style=social&logo=github)
+![Stars](https://img.shields.io/github/stars/lxmwaniky/UoEm_hacktoberfest?style=social&logo=github)
+[![License](https://img.shields.io/github/license/lxmwaniky/UoEm_hacktoberfest?style=social&logo=github)](https://github.com/lxmwaniky/UoEm_hacktoberfest/blob/main/LICENSE)
 
 
 # Videos 📽️:
@@ -114,3 +118,7 @@ For more information on syncing forks [read this article from Github](https://he
 <br>
 
 ## Our Top Contributors 
+
+<a href="https://github.com/lxmwaniky/UoEm_hacktoberfest/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=lxmwaniky/UoEm_hacktoberfest" />
+</a>
