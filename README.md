@@ -48,7 +48,8 @@ cd UoEm_hacktoberfest
 ```markdown
 git checkout -b <my-new-branch>
 ```
-
+ - Add your Full name and Github account link in the [Contributors List](./contributors.txt) 
+ - Track your Changes
 <!--- - Add your Name to `contributors/contributorsList.js`. -->
 
 ```markdown
