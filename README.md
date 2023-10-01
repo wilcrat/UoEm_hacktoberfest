@@ -18,15 +18,15 @@ Star ⭐ and Share this repository.
 
 - [Hacktoberfest Intro](https://www.youtube.com/watch?v=mq_FIHdxmIk)
 - [How to pull request [Overview]](https://youtu.be/DIj2q02gvKs)
-- [Merge Conflict / comment](https://youtu.be/zOx5PJTY8CI)
+- [Merge Conflict/comment](https://youtu.be/zOx5PJTY8CI)
 
 
 # Contribution Rules📚:
 
-- You are allowed to make pull requests that break the rules. We just merge it
+- You are allowed to make pull requests that break the rules. We merge it
 - Do NOT remove other content.
 - Styling/code can be pretty, ugly or stupid, big or small as long as it works
-<!-- - Add your name to the contributorsList file. -->
+<!-- - Add your name to the contributors' list file. -->
 - Try to keep pull requests small to minimize merge conflicts
 
 
@@ -38,9 +38,9 @@ Star ⭐ and Share this repository.
 ```terminal
 git clone https://github.com/lxmwaniky/UoEm_hacktoberfest.git
 ```
-- Navigate to project directory.
+- Navigate to the project directory.
 ```terminal
-cd UoEm_hactoberfest
+cd UoEm_hacktoberfest
 ```
 
 - Create a new Branch
