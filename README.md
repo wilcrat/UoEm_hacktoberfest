@@ -3,7 +3,12 @@
 **This is a beginner-friendly project to help you get started with your
 [hacktoberfest](https://hacktoberfest.digitalocean.com/). If you don't know where to start, feel free to watch the videos linked below, and read the contribution rules!!**
 
-Star ⭐ and Share this repository, if you had fun!! 😍
+Star ⭐ and Share this repository.
+
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/lxmwaniky/UoEm_hacktoberfest/issues)
+[![GitHub issues by-label](https://img.shields.io/github/issues-pr-closed-raw/lxmwaniky/UoEm_hacktoberfest.svg)](https://github.com/lxmwaniky/UoEm_hacktoberfest/pulls?q=is%3Apr+is%3Aclosed)
+[![GitHub issues by-label](https://img.shields.io/github/issues-pr/lxmwaniky/UoEm_hacktoberfest.svg)](https://github.com/lxmwaniky/UoEm_hacktoberfest/pulls?q=is%3Aopen+is%3Apr)
+
 
 # Videos 📽️:
 
