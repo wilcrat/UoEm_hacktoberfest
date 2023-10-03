@@ -36,7 +36,7 @@ Star ⭐ and Share this repository.
 - Clone on your local machine
 
 ```terminal
-git clone https://github.com/lxmwaniky/UoEm_hacktoberfest.git
+git clone https://github.com/<Your_username>/UoEm_hacktoberfest.git
 ```
 - Navigate to the project directory.
 ```terminal
