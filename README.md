@@ -124,9 +124,6 @@ For more information on syncing forks [read this article from Github](https://he
   <img src="https://contrib.rocks/image?repo=lxmwaniky/UoEm_hacktoberfest" />
 </a>
 
-<p>This project is supported by:</p>
-<p>
-  <a href="https://www.digitalocean.com/">
-    <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="201px">
-  </a>
-</p>
+This project is supported by:
+
+[![DigitalOcean](https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg)](https://www.digitalocean.com/)
