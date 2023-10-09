@@ -1,11 +1,10 @@
 import sqlite3
 
-conn = sqlite3.connect('students.db')
-cs = conn.cursor()
+conn = sqlite3.connect('customer.db')
+c = conn.cursor()
+c.execute("""CREATE TABLE customers (
+          first_name  
+)
 
-cs.execute("INSERT INTO students VALUES ('Mark', 'Mutua', 'mmmutua@gmail.com')")
 
-print("Command executed Successfully...")
-
-conn.commit()
-conn.close()
+""")
