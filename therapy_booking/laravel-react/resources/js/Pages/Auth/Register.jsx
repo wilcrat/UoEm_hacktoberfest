@@ -29,6 +29,10 @@ export default function Register() {
     return (
         <GuestLayout>
             <Head title="Register" />
+            <div className='mb-4'>
+                <h4 className='text-green-400'>Create a New account</h4>
+                <small className='text-gray-400'> Please put your information below to create new account</small>
+            </div>
 
             <form onSubmit={submit}>
                 <div>
@@ -99,7 +103,10 @@ export default function Register() {
                     <InputError message={errors.password_confirmation} className="mt-2" />
                 </div>
 
-                <div className="flex items-center justify-end mt-4">
+                <PrimaryButton className="mt-4 w-full flex justify-center" disabled={processing}>
+                        Register
+                </PrimaryButton>
+                <div className="flex items-center justify-center mt-4">
                     <Link
                         href={route('login')}
                         className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
@@ -107,9 +114,7 @@ export default function Register() {
                         Already registered?
                     </Link>
 
-                    <PrimaryButton className="ml-4" disabled={processing}>
-                        Register
-                    </PrimaryButton>
+          
                 </div>
             </form>
         </GuestLayout>
