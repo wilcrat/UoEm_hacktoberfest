@@ -1,9 +1,9 @@
 import LOGO from "@/images/logo2.png"
 
-export default function ApplicationLogo(props) {
+export default function ApplicationLogo({className = '',props}) {
     return (
-        <div className="flex justify-center my-3">
-            <img src={LOGO} />
+        <div  className={"flex justify-center my-3"+className}>
+            <img {...props} src={LOGO} />
         </div>
         );
     }

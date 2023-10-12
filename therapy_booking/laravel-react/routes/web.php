@@ -29,6 +29,18 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/appointments/create', function () {
+    return Inertia::render('BookAppointment');
+})->middleware(['auth'])->name('appointments.create');
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/', [ProfileController::class, 'create'])->name('appointments.create');
+//     Route::post('/', [ProfileController::class, 'store'])->name('appointments.store');
+//     Route::get('/', [ProfileController::class, 'edit'])->name('appointments.edit');
+//     Route::patch('/', [ProfileController::class, 'update'])->name('appointments.update');
+//     Route::delete('/', [ProfileController::class, 'destroy'])->name('appointments.destroy');
+// });
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
