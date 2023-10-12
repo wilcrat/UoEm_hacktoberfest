@@ -8,11 +8,13 @@ export default function Dashboard({ auth }) {
             user={auth.user}
             header={
                 (
-                <div className='text-gray-800 dark:text-gray-200'>
-                    <p>We look forward to serving you</p>
+                <div className='text-gray-800 dark:text-gray-200 flex justify-center'>
+                  <div>
+                  <p>We look forward to serving you</p>
                     {/* <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Dashboard</h2> */}
-                    <PrimaryButton className='my-3'>Book Session</PrimaryButton>
+                    <PrimaryButton className='my-3 ml-10'>Book Session</PrimaryButton>
                     <p>You have an appointment on</p>
+                  </div>
                 </div>
                 )
             }
@@ -95,8 +97,8 @@ export default function Dashboard({ auth }) {
                     </div>
                 </div>
             </div>
-            <div className='flex justify-center m-3'>
-            <PrimaryButton className='my-3'>Book Session</PrimaryButton>
+            <div className='flex justify-center'>
+            <PrimaryButton className='my-6'>Book Session</PrimaryButton>
             </div>
 
         </AuthenticatedLayout>
