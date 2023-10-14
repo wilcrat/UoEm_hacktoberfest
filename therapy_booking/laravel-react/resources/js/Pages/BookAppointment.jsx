@@ -5,33 +5,90 @@ import { Head } from '@inertiajs/react'
 import React, { useState } from 'react'
 
 const BookAppointment = ({auth}) => {
-
+    const [selectedDate, setSelectedDate] = useState(null);
     const [selectedDay, setSelectedDay] = useState(null);
     const [selectedTime, setSelectedTime] = useState(null);
+    const [bookedSlots, setBookedSlots] = useState([]);
     const days = ["Tuesday", "Wednesday"];
   
-    const handleDayClick = (day) => {
+    // Get this week's Tuesday and Wednesday dates
+    const today = new Date();
+    const tuesdayDate = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate() + ((today.getDay() + 5) % 7) - 1
+    ); // Tuesday
+    const wednesdayDate = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate() + ((today.getDay() + 6) % 7) - 1
+    ); // Wednesday
+  
+   
+  
+    const handleDayClick = async(day) => {
       setSelectedDay(day);
-      setSelectedTime(null); // Reset selected time when changing the day.
+      setSelectedTime(null);  
+      // Update selectedDate based on the selected day
+      let selectedDate = day === "Tuesday" ? tuesdayDate : wednesdayDate;
+      setSelectedDate(selectedDate);
     };
+
+    console.log(selectedDate)
   
     const timeSlots = [
       "10:00am - 11:00am",
       "11:00am - 12:00pm",
       "12:00pm - 1:00pm",
-      "12:00pm - 1:00pm",
-      "12:00pm - 1:00pm",
-      "12:00pm - 1:00pm",
-      "12:00pm - 1:00pm",
-      "12:00pm - 1:00pm",
-      // Add more time slots here
+      "1:00pm - 2:00pm",
+      "2:00pm - 3:00pm",
+      "3:00pm - 4:00pm",
+      "4:00pm - 5:00pm",
+      "6:00pm - 7:00pm",
     ];
+
+    const timeSlotsWensDay = [
+        "8:00am - 9:00am",
+        "9:00am - 10:00am",
+        "10:00am - 11:00am",
+        "11:00am - 12:00pm",
+        "12:00pm - 1:00pm",
+        "1:00pm - 2:00pm",
+        "2:00pm - 3:00pm",
+        "3:00pm - 4:00pm",
+        "4:00pm - 5:00pm",
+      ];
   
     const handleTimeClick = (time) => {
-      setSelectedTime(time);
-      console.log("Selected time:", time);
+      if (!selectedDate) {
+        console.log("Please select a day first.");
+        return;
+      }
+  
+      const selectedDateTime = `${selectedDate.toDateString()} ${time}`;
+      
+      if (bookedSlots.includes(selectedDateTime)) {
+        console.log("This slot is already booked.");
+      } else {
+        setSelectedTime(time);
+        console.log("Selected date:", selectedDate.toDateString());
+        console.log("Selected time:", time);
+      }
     };
   
+    const handleBookSuccess = () => {
+      if (!selectedDate || !selectedTime) {
+        console.log("Please select both day and time.");
+        return;
+      }
+  
+      const selectedDateTime = `${selectedDate.toDateString()} ${selectedTime}`;
+      
+      if (!bookedSlots.includes(selectedDateTime)) {
+        setBookedSlots([...bookedSlots, selectedDateTime]);
+      }
+    };
+
   return (
     <Authenticated   user={auth.user}  >
         <Head title='Book a Session' />
@@ -42,7 +99,7 @@ const BookAppointment = ({auth}) => {
       
         <h1 className='text-white text-2xl text-center mb-4'>BookAppointment</h1>
 
-        <div className="container mx-auto p-4">
+      <div className="container mx-auto p-4">
         <div className="flex justify-center">
             {days.map((day, index) => (
             <button
@@ -59,26 +116,30 @@ const BookAppointment = ({auth}) => {
             ))}
         </div>
 
-        {selectedDay && (
-            <div className="mt-4">
-            <h2 className="text-2xl font-semibold dark:text-white mb-5 text-center">
-                Available Time Slots for {selectedDay}:
-            </h2>
-            <div className="flex flex-wrap -m-2 justify-center">
-                {timeSlots.map((timeSlot, index) => (
-                <button
-                    key={index}
-                    onClick={() => handleTimeClick(timeSlot)}
-                    className={`${
-                    selectedTime === timeSlot
-                        ? "bg-blue-500 text-white"
-                        : "bg-gray-300 text-gray-700"
-                    } p-2 m-2 rounded-md`}
-                >
-                    {timeSlot}
-                </button>
-                ))}
-            </div>
+
+      {selectedDay && (
+        <div className="mt-4">
+          <h2 className="text-2xl font-semibold dark:text-white">
+            Available Time Slots for {selectedDay} ({selectedDate?.toDateString()}):
+          </h2>
+          <div className="flex flex-wrap -m-2">
+            {timeSlots.map((timeSlot, index) => (
+              <button
+                key={index}
+                onClick={() => handleTimeClick(timeSlot)}
+                disabled={bookedSlots.includes(`${selectedDate?.toDateString()} ${timeSlot}`)}
+                className={`${
+                  bookedSlots.includes(`${selectedDate?.toDateString()} ${timeSlot}`)
+                    ? "bg-gray-300 text-gray-700 cursor-not-allowed"
+                    : selectedTime === timeSlot
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-300 text-gray-700"
+                } p-2 m-2 rounded-md`}
+              >
+                {timeSlot}
+              </button>
+            ))}
+          </div>
         </div>
       )}
 
@@ -91,11 +152,14 @@ const BookAppointment = ({auth}) => {
         </div>
         </form>
 
+        {selectedTime && !bookedSlots.includes(`${selectedDate?.toDateString()} ${selectedTime}`) && (
         <div className='flex justify-center'> 
-            <PrimaryButton>
+            <PrimaryButton  className="bg-blue-500 text-white p-2 m-4 rounded-md"
+            onClick={handleBookSuccess}>
                 Book AppointMent
             </PrimaryButton>
         </div>
+        )}
 
     </div>
     </div>
