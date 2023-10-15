@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -29,17 +30,17 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/appointments/create', function () {
-    return Inertia::render('BookAppointment');
-})->middleware(['auth'])->name('appointments.create');
+// Route::get('/appointments/create', function () {
+//     return Inertia::render('BookAppointment');
+// })->middleware(['auth'])->name('appointments.create');
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/', [ProfileController::class, 'create'])->name('appointments.create');
-//     Route::post('/', [ProfileController::class, 'store'])->name('appointments.store');
-//     Route::get('/', [ProfileController::class, 'edit'])->name('appointments.edit');
-//     Route::patch('/', [ProfileController::class, 'update'])->name('appointments.update');
-//     Route::delete('/', [ProfileController::class, 'destroy'])->name('appointments.destroy');
-// });
+Route::middleware('auth')->group(function () {
+    Route::get('/appointments/create', [SessionController::class, 'create'])->name('appointments.create');
+    Route::post('/appointments', [SessionController::class, 'store'])->name('appointments.store');
+    Route::get('/appointments', [SessionController::class, 'edit'])->name('appointments.edit');
+    Route::patch('/appointments', [SessionController::class, 'update'])->name('appointments.update');
+    Route::delete('/appointments', [SessionController::class, 'destroy'])->name('appointments.destroy');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
