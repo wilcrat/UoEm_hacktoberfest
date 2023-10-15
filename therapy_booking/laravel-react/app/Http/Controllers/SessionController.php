@@ -24,8 +24,14 @@ class SessionController extends Controller
      */
     public function create()
     {
-        return Inertia::render('BookAppointment');
-    }
+        // Fetch bookedDateTime values from your database
+        $bookedAppointments = Session::pluck('bookedDateTime')->toArray();
+
+        // Pass the array of bookedDateTime values to the view
+        return Inertia::render('BookAppointment', [
+            'bookedAppointmentSlots' => $bookedAppointments,
+        ]);  
+  }
 
     /**
      * Store a newly created resource in storage.

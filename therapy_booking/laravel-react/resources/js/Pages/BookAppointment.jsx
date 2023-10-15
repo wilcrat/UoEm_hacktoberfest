@@ -2,14 +2,18 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import SecondaryButton from '@/Components/SecondaryButton';
 import Authenticated from '@/Layouts/AuthenticatedLayout'
 import { Head,router } from '@inertiajs/react'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-const BookAppointment = ({auth}) => {
+const BookAppointment = ({auth,bookedAppointmentSlots}) => {
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedDay, setSelectedDay] = useState(null);
     const [selectedTime, setSelectedTime] = useState(null);
     const [bookedSlots, setBookedSlots] = useState([]);
     const days = ["Tuesday", "Wednesday"];
+
+    useEffect(()=>{
+      setBookedSlots([...bookedSlots,...bookedAppointmentSlots])
+    },[bookedAppointmentSlots])
   
     // Get this week's Tuesday and Wednesday dates
     const today = new Date();

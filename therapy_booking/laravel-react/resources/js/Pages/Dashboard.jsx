@@ -5,7 +5,6 @@ import {BiCalendar,BiTime} from "react-icons/bi";
 
 export default function Dashboard({ auth,sessions }) {
 
-    console.log(sessions)
     function splitDateTime(initDate) {
         // Use a regular expression to match the date and time range
         const regex = /(\w{3} \w{3} \d{1,2} \d{4}) (\d{1,2}:\d{2}[ap]m - \d{1,2}:\d{2}[ap]m)/;
