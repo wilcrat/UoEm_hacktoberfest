@@ -13,18 +13,15 @@ const BookAppointment = ({auth}) => {
   
     // Get this week's Tuesday and Wednesday dates
     const today = new Date();
-    const tuesdayDate = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      today.getDate() + ((today.getDay() + 5) % 7) - 1
-    ); // Tuesday
-    const wednesdayDate = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      today.getDate() + ((today.getDay() + 6) % 7) - 1
-    ); // Wednesday
-  
-   
+    const currentDay = today.getDay(); // 0 (Sunday) to 6 (Saturday)
+    const daysUntilTuesday = 2 - currentDay; // Days remaining until Tuesday (0-6)
+    const daysUntilWednesday = 3 - currentDay; // Days remaining until Wednesday (0-6)
+    
+    const tuesdayDate = new Date(today);
+    tuesdayDate.setDate(today.getDate() + daysUntilTuesday);
+    
+    const wednesdayDate = new Date(today);
+    wednesdayDate.setDate(today.getDate() + daysUntilWednesday);
   
     const handleDayClick = async(day) => {
       setSelectedDay(day);
@@ -34,7 +31,6 @@ const BookAppointment = ({auth}) => {
       setSelectedDate(selectedDate);
     };
 
-    console.log(selectedDate)
   
     const timeSlots = [
       "10:00am - 11:00am",
