@@ -14,7 +14,7 @@ class SessionController extends Controller
     public function index()
     {
         $sessions=Session::all();
-        return Inertia::render('Sessions/Index', [
+        return Inertia::render('Dashboard', [
             'sessions' => $sessions
         ]);
     }

@@ -26,20 +26,24 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return Inertia::render('Dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 // Route::get('/appointments/create', function () {
 //     return Inertia::render('BookAppointment');
 // })->middleware(['auth'])->name('appointments.create');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [SessionController::class, 'index'])->name('dashboard');
+
     Route::get('/appointments/create', [SessionController::class, 'create'])->name('appointments.create');
     Route::post('/appointments', [SessionController::class, 'store'])->name('appointments.store');
-    Route::get('/appointments', [SessionController::class, 'edit'])->name('appointments.edit');
-    Route::patch('/appointments', [SessionController::class, 'update'])->name('appointments.update');
-    Route::delete('/appointments', [SessionController::class, 'destroy'])->name('appointments.destroy');
+
+    Route::get('/appointments/{session}', [SessionController::class, 'edit'])->name('appointments.show');
+    Route::get('/appointments/{session}/edit', [SessionController::class, 'edit'])->name('appointments.edit');
+    Route::patch('/appointments/{session}', [SessionController::class, 'update'])->name('appointments.update');
+    Route::delete('/appointments/{session}', [SessionController::class, 'destroy'])->name('appointments.destroy');
 });
 
 Route::middleware('auth')->group(function () {
