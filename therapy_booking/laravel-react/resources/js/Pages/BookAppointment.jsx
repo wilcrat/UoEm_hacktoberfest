@@ -79,6 +79,9 @@ const BookAppointment = ({auth}) => {
       }
   
       const selectedDateTime = `${selectedDate.toDateString()} ${selectedTime}`;
+
+      //Save in db
+      router.post('/appointments',{bookedDateTime:selectedDateTime});
       
       if (!bookedSlots.includes(selectedDateTime)) {
         setBookedSlots([...bookedSlots, selectedDateTime]);

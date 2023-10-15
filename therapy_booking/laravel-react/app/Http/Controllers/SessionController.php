@@ -36,7 +36,7 @@ class SessionController extends Controller
         $session->bookedDateTime = $request->bookedDateTime;
         $session->user_id = auth()->user()->id; // Assuming you have user authentication
         $session->save();
-        return redirect()->route('sessions.index');
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -66,7 +66,7 @@ class SessionController extends Controller
     {
         $session->bookedDateTime = $request->bookedDateTime;
         $session->save();
-        return redirect()->route('sessions.index');
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -75,6 +75,6 @@ class SessionController extends Controller
     public function destroy(Session $session)
     {
         $session->delete();
-        return redirect()->route('sessions.index');
+        return redirect()->route('dashboard');
     }
 }

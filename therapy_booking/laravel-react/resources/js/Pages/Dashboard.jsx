@@ -2,7 +2,9 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 
-export default function Dashboard({ auth }) {
+export default function Dashboard({ auth,sessions }) {
+
+    console.log(sessions)
     return (
         <AuthenticatedLayout
             user={auth.user}
