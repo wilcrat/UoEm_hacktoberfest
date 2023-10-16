@@ -1,30 +1,31 @@
 import PrimaryButton from '@/Components/PrimaryButton';
 import SecondaryButton from '@/Components/SecondaryButton';
 import Authenticated from '@/Layouts/AuthenticatedLayout'
-import { Head } from '@inertiajs/react'
-import React, { useState } from 'react'
+import { Head,router } from '@inertiajs/react'
+import React, { useEffect, useState } from 'react'
 
-const BookAppointment = ({auth}) => {
+const BookAppointment = ({auth,bookedAppointmentSlots}) => {
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedDay, setSelectedDay] = useState(null);
     const [selectedTime, setSelectedTime] = useState(null);
     const [bookedSlots, setBookedSlots] = useState([]);
     const days = ["Tuesday", "Wednesday"];
+
+    useEffect(()=>{
+      setBookedSlots([...bookedSlots,...bookedAppointmentSlots])
+    },[bookedAppointmentSlots])
   
     // Get this week's Tuesday and Wednesday dates
     const today = new Date();
-    const tuesdayDate = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      today.getDate() + ((today.getDay() + 5) % 7) - 1
-    ); // Tuesday
-    const wednesdayDate = new Date(
-      today.getFullYear(),
-      today.getMonth(),
-      today.getDate() + ((today.getDay() + 6) % 7) - 1
-    ); // Wednesday
-  
-   
+    const currentDay = today.getDay(); // 0 (Sunday) to 6 (Saturday)
+    const daysUntilTuesday = 2 - currentDay; // Days remaining until Tuesday (0-6)
+    const daysUntilWednesday = 3 - currentDay; // Days remaining until Wednesday (0-6)
+    
+    const tuesdayDate = new Date(today);
+    tuesdayDate.setDate(today.getDate() + daysUntilTuesday);
+    
+    const wednesdayDate = new Date(today);
+    wednesdayDate.setDate(today.getDate() + daysUntilWednesday);
   
     const handleDayClick = async(day) => {
       setSelectedDay(day);
@@ -34,7 +35,6 @@ const BookAppointment = ({auth}) => {
       setSelectedDate(selectedDate);
     };
 
-    console.log(selectedDate)
   
     const timeSlots = [
       "10:00am - 11:00am",
@@ -83,6 +83,9 @@ const BookAppointment = ({auth}) => {
       }
   
       const selectedDateTime = `${selectedDate.toDateString()} ${selectedTime}`;
+
+      //Save in db
+      router.post('/appointments',{bookedDateTime:selectedDateTime});
       
       if (!bookedSlots.includes(selectedDateTime)) {
         setBookedSlots([...bookedSlots, selectedDateTime]);
