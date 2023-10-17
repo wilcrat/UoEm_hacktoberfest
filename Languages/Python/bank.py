@@ -42,6 +42,33 @@ def take_loan(user):
         else:
             print("Invalid password or username!")
             other_options(user, password)
+#Allows user to completely delete his account
+def delete(user):
+    print("WARNING YOU ARE TRYING TO DELETE YOUR ACCOUNT")
+    print("Enter 1 to continue or 0 to terminate")
+    choice = input(">> ")
+    if choice == 1 or choice == '1':
+        password = input("Enter your password: ")
+        cursor.execute("SELECT Password FROM Users WHERE Name LIKE (?)", (user.capitalize(),))
+        passwords = cursor.fetchall()
+        for passwd in passwords:
+            print(passwords)
+            if passwd[0] == password:
+                print("\t\t\t\t ***DELETING ACCOUNT*** \t\t\t\t\n")
+                time.sleep(2)
+                cursor.execute("DELETE FROM Balance WHERE Name LIKE (?)", (user.capitalize(),))
+                cursor.execute("DELETE FROM Loan WHERE Name LIKE (?)", (user.capitalize(),))
+                cursor.execute("DELETE FROM Users WHERE Name LIKE (?)", (user.capitalize(),))
+                cursor.execute("DELETE FROM Messages WHERE Name LIKE (?)", (user.capitalize(),))
+                conn.commit()
+                print("Account deleted successfully.")
+                main()
+            else:
+                print("Invalid password or username!")
+                delete(user)
+    else:
+        print("Process was terminated successfully!")
+        other_options(user, password)
 
 #allow the user to withdraw from the bank
 def withdraw(user):
@@ -205,6 +232,7 @@ def other_options(user, password):
     print("4: Take loan")
     print("5: Show details")
     print("6: Log out")
+    print("7: Delete account")
     choice = input("Choice: ")
     if choice == 1 or choice == '1':
         deposit(user)
@@ -219,6 +247,8 @@ def other_options(user, password):
     elif choice == 6 or choice == '6':
         print("\t\t\t\t ***Logging out*** \t\t\t\t")
         main()
+    elif choice == 7 or choice == '7':
+        delete(user)
     else:
         print("Invalid input! Try again")
         other_options(user, password)
