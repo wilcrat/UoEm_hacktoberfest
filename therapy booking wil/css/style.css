@@ -1,0 +1,20 @@
+body {
+    scroll-behavior: smooth;
+  }
+  * {
+    box-sizing: border-box;
+    max-width: 100%;
+    list-style-type: none;
+    text-decoration: none;
+    color: aliceblue;
+    margin: auto;
+    font-family: "Raleway", "Lato";
+  }
+  
+  @import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Lato&family=Raleway&display=swap");
+  
+  body {
+    background-color: #eeeeee;
+  }
+  
