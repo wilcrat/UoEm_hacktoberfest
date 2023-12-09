@@ -25,4 +25,5 @@ input[type="password"] {
   margin-top: 5px;
   border: 1px solid rgb(58, 58, 58);
   border-radius: 5px;
+  padding: 10px;
 }
