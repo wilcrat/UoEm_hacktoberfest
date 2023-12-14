@@ -15,6 +15,10 @@ body {
   --buttons-color: #27ae60;
   --main-txt-color: rgb(233, 85, 0);
 }
+button {
+  cursor: pointer;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato&family=Raleway&display=swap");
 
