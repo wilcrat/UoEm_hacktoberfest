@@ -15,9 +15,6 @@ body {
   --buttons-color: #27ae60;
   --main-txt-color: rgb(233, 85, 0);
 }
-input[type="submit"] {
-  cursor: pointer;
-}
 
 @import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato&family=Raleway&display=swap");
@@ -26,6 +23,9 @@ body {
   background-color: #eeeeee;
 }
 
+a {
+  color: var(--greentext-color);
+}
 input[type="email"],
 input[type="password"],
 input[type="text"],
@@ -42,4 +42,5 @@ input[type="submit"] {
   background-color: var(--buttons-color);
   border: none;
   color: white;
+  cursor: pointer;
 }
