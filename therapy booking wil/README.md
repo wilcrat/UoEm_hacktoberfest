@@ -1,10 +1,10 @@
 ## Therapy Sessions Booking
 
 **Sign In Page**
-<img src="./snapshots/signin.png" width="700">
+![](./snapshots/signin.png)
 
 **Sign Up Page**
-<img src="./snapshots/signup.png" width="700">
+![](./snapshots/signup.png)
 
 **OTP Page**
 ![](./snapshots/otp.png)
